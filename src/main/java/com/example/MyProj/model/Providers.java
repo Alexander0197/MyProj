@@ -4,7 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
-public class Provider {
+public class Providers {
     @Id
     private int trn;
     private String titleProvider;
@@ -44,10 +44,10 @@ public class Provider {
         this.accountNumber = accountNumber;
     }
 
-    public Provider() {
+    public Providers() {
     }
 
-    public Provider(int trn, String titleProvider, String bankDetails, int accountNumber) {
+    public Providers(int trn, String titleProvider, String bankDetails, int accountNumber) {
         this.trn = trn;
         this.titleProvider = titleProvider;
         this.bankDetails = bankDetails;

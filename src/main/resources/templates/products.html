@@ -6,6 +6,7 @@
 </head>
 <body>
 <a href="addProducts">Добавить новый товар</a>
+<a href="providers">Поставщики</a>
 <table border="1">
     <tr>
     <th>Артикул</th>
@@ -13,12 +14,12 @@
     <th>Производитель</th>
     <th>Стоимость</th>
     </tr>
-    <tr>
-        <tr th:each = " products : ${productsAll}">
+    <tr th:each = " products : ${productsAll}">
         <td th:text = ${products.vendorCode}></td>
         <td th:text = ${products.title}></td>
         <td th:text = ${products.manufacturer}></td>
         <td th:text = ${products.price}></td>
+
     <td >
         <a class="text-danger" th:href="@{delete(vendorCode=${products.vendorCode})}"> Удалить</a>
     </td>
