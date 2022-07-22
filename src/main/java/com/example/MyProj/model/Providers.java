@@ -2,6 +2,9 @@ package com.example.MyProj.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import java.util.List;
 
 @Entity
 public class Providers {
@@ -10,7 +13,8 @@ public class Providers {
     private String titleProvider;
     private String bankDetails;
     private int accountNumber;
-
+    @ManyToOne
+    private Products products;
 
     public int getTrn() {
         return trn;

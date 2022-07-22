@@ -2,6 +2,7 @@ package com.example.MyProj.controller;
 
 import com.example.MyProj.model.Products;
 import com.example.MyProj.repository.ProductsRepository;
+import com.example.MyProj.repository.ProvidersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,6 +17,7 @@ import java.util.List;
 public class ProductsController {
     @Autowired
     ProductsRepository repository;
+
 
     @GetMapping("/products")
     public String findAll(Model model)

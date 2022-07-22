@@ -1,6 +1,7 @@
 package com.example.MyProj.model;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Products {
@@ -11,6 +12,16 @@ public class Products {
     private String title;
     private String manufacturer;
     private int price;
+    @OneToMany (cascade = CascadeType.MERGE, mappedBy = "products")
+    private List<Providers> providers;
+
+    public List<Providers> getProviders() {
+        return providers;
+    }
+
+    public void setProviders(List<Providers> providers) {
+        this.providers = providers;
+    }
 
     public Products() {
     }

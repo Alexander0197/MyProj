@@ -1,7 +1,7 @@
 package com.example.MyProj.controller;
 
-import com.example.MyProj.model.Products;
 import com.example.MyProj.model.Providers;
+import com.example.MyProj.repository.ProductsRepository;
 import com.example.MyProj.repository.ProvidersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,19 +17,20 @@ import java.util.List;
 public class ProvidersController {
 
     @Autowired
-    ProvidersRepository repository;
+    ProvidersRepository repositoryProviders;
+
 
     @GetMapping("/providers")
     public String findAll(Model model)
     {
-        List<Providers> providersAll = repository.findAll();
+        List<Providers> providersAll = repositoryProviders.findAll();
         model.addAttribute("providersAll", providersAll);
         return "providers";
     }
     @GetMapping("/deleteProviders")
     public String deleteProviders(@RequestParam int trn)
     {
-        repository.deleteById(trn);
+        repositoryProviders.deleteById(trn);
         return "redirect:providers";
     }
     @GetMapping("/addProviders")
@@ -40,7 +41,7 @@ public class ProvidersController {
     @PostMapping("/addProviders")
     public String addProviders(@ModelAttribute Providers providers)
     {
-        repository.save(providers);
+        repositoryProviders.save(providers);
         return "redirect:providers";
     }
 }

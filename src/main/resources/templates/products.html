@@ -13,12 +13,15 @@
     <th>Название</th>
     <th>Производитель</th>
     <th>Стоимость</th>
+        <th> УНП</th>
+
     </tr>
     <tr th:each = " products : ${productsAll}">
         <td th:text = ${products.vendorCode}></td>
         <td th:text = ${products.title}></td>
         <td th:text = ${products.manufacturer}></td>
         <td th:text = ${products.price}></td>
+
 
     <td >
         <a class="text-danger" th:href="@{delete(vendorCode=${products.vendorCode})}"> Удалить</a>
