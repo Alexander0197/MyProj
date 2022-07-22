@@ -1,11 +1,15 @@
 package com.example.MyProj.controller;
 
+import com.example.MyProj.model.Products;
 import com.example.MyProj.model.Providers;
 import com.example.MyProj.repository.ProvidersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -21,5 +25,22 @@ public class ProvidersController {
         List<Providers> providersAll = repository.findAll();
         model.addAttribute("providersAll", providersAll);
         return "providers";
+    }
+    @GetMapping("/deleteProviders")
+    public String deleteProviders(@RequestParam int trn)
+    {
+        repository.deleteById(trn);
+        return "redirect:providers";
+    }
+    @GetMapping("/addProviders")
+    public String addProviders()
+    {
+        return "addProviders";
+    }
+    @PostMapping("/addProviders")
+    public String addProviders(@ModelAttribute Providers providers)
+    {
+        repository.save(providers);
+        return "redirect:providers";
     }
 }
