@@ -29,7 +29,7 @@
     <br>Наименование поставщика
     <br><select name="providers" required>
         <th:block th:each="providers : ${providersAll}">
-            <option th:value="${providers.trn}" th:text="${providers.title}"/>
+            <option th:value="${providers.trn}"  th:text="${providers.title}"/>
         </th:block>
     </select>
     <br>

@@ -10,7 +10,7 @@ public class Providers {
     private String title;
     public String bankDetails;
     private int accountNumber;
-    @OneToMany (cascade = CascadeType.MERGE, mappedBy = "providers")
+    @OneToMany(cascade = CascadeType.MERGE, mappedBy = "providers")
     private List<Products> productsAll;
 
     public Providers(int trn, String titleProvider, String bankDetails, int accountNumber, List<Products> productsAll) {
@@ -67,7 +67,6 @@ public class Providers {
     public void setAccountNumber(int accountNumber) {
         this.accountNumber = accountNumber;
     }
-
 
 
     @Override
