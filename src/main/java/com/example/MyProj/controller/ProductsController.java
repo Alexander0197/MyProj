@@ -16,31 +16,47 @@ import java.util.List;
 @Controller
 public class ProductsController {
     @Autowired
-    ProductsRepository repository;
+    ProductsRepository productsRepository;
+    @Autowired
+    ProvidersRepository providersRepository;
 
-
-    @GetMapping("/products")
+    @GetMapping("/productsAll")
     public String findAll(Model model)
    {
-    List<Products> productsAll = repository.findAll();
+    List<Products> productsAll = productsRepository.findAll();
         model.addAttribute("productsAll", productsAll);
-       return "products";
+       return "productsAll";
     }
     @GetMapping("/delete")
     public String delete(@RequestParam int vendorCode)
     {
-        repository.deleteById(vendorCode);
-        return "redirect:products";
+        productsRepository.deleteById(vendorCode);
+        return "redirect:productsAll";
     }
     @GetMapping("/addProducts")
-    public String addProducts()
-    {
+    public String addProducts(Model model)
+    {   model.addAttribute("providersAll", providersRepository.findAll());
+
         return "addProducts";
     }
     @PostMapping("/addProducts")
     public String addProducts(@ModelAttribute Products products)
     {
-        repository.save(products);
-        return "redirect:products";
+        productsRepository.save(products);
+        return "redirect:productsAll";
     }
+    @GetMapping("/update-products")
+    public String update(@RequestParam int vendorCode, Model model) {
+        Products products = productsRepository.findById(vendorCode).get();
+        model.addAttribute("providersAll", providersRepository.findAll());
+        model.addAttribute("products", products);
+        return "update-products";
+    }
+
+    @PostMapping("/update-products")
+    public String update(@ModelAttribute Products person) {
+        productsRepository.save(person);
+        return "redirect:productsAll";
+    }
+
 }

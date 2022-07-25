@@ -1,20 +1,40 @@
 package com.example.MyProj.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
 public class Providers {
     @Id
     private int trn;
-    private String titleProvider;
-    private String bankDetails;
+    private String title;
+    public String bankDetails;
     private int accountNumber;
-    @ManyToOne
-    private Products products;
+    @OneToMany (cascade = CascadeType.MERGE, mappedBy = "providers")
+    private List<Products> productsAll;
+
+    public Providers(int trn, String titleProvider, String bankDetails, int accountNumber, List<Products> productsAll) {
+        this.trn = trn;
+        this.title = titleProvider;
+        this.bankDetails = bankDetails;
+        this.accountNumber = accountNumber;
+        this.productsAll = productsAll;
+    }
+
+    public Providers() {
+    }
+
+    public Providers(int trn) {
+        this.trn = trn;
+    }
+
+    public List<Products> getProductsAll() {
+        return productsAll;
+    }
+
+    public void setProducts(List<Products> productsAll) {
+        this.productsAll = productsAll;
+    }
 
     public int getTrn() {
         return trn;
@@ -24,12 +44,12 @@ public class Providers {
         this.trn = trn;
     }
 
-    public String getTitleProvider() {
-        return titleProvider;
+    public String getTitle() {
+        return title;
     }
 
-    public void setTitleProvider(String titleProvider) {
-        this.titleProvider = titleProvider;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getBankDetails() {
@@ -48,21 +68,13 @@ public class Providers {
         this.accountNumber = accountNumber;
     }
 
-    public Providers() {
-    }
 
-    public Providers(int trn, String titleProvider, String bankDetails, int accountNumber) {
-        this.trn = trn;
-        this.titleProvider = titleProvider;
-        this.bankDetails = bankDetails;
-        this.accountNumber = accountNumber;
-    }
 
     @Override
     public String toString() {
         return "Provider{" +
                 "trn=" + trn +
-                ", titleProvider='" + titleProvider + '\'' +
+                ", titleProvider='" + title + '\'' +
                 ", bankDetails='" + bankDetails + '\'' +
                 ", accountNumber=" + accountNumber +
                 '}';

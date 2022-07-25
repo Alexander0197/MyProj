@@ -12,19 +12,29 @@ public class Products {
     private String title;
     private String manufacturer;
     private int price;
-    @OneToMany (cascade = CascadeType.MERGE, mappedBy = "products")
-    private List<Providers> providers;
-
-    public List<Providers> getProviders() {
-        return providers;
-    }
-
-    public void setProviders(List<Providers> providers) {
-        this.providers = providers;
-    }
+    @ManyToOne
+    private Providers providers;
 
     public Products() {
     }
+
+    public Products(int vendorCode, String title, String manufacturer, int price, Providers providers) {
+        this.vendorCode = vendorCode;
+        this.title = title;
+        this.manufacturer = manufacturer;
+        this.price = price;
+        this.providers = providers;
+    }
+
+    public Providers getProviders() {
+        return providers;
+    }
+
+    public void setProviders(Providers providers) {
+        this.providers = providers;
+    }
+
+
 
     public int getVendorCode() {
         return vendorCode;
@@ -58,12 +68,6 @@ public class Products {
         this.price = price;
     }
 
-    public Products(int vendorCode, String title, String manufacturer, int price) {
-        this.vendorCode = vendorCode;
-        this.title = title;
-        this.manufacturer = manufacturer;
-        this.price = price;
-    }
 
 
 
