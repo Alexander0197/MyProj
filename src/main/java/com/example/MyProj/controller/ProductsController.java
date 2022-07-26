@@ -37,7 +37,7 @@ public class ProductsController {
     public String getProducts(@RequestParam int trn, Model model)
     {
         List<Products> products = productsRepository.getProducts(trn);
-        model.addAttribute("productsAll", products);
+        model.addAttribute("getProducts", products);
         return "getProducts";
     }
     @GetMapping("/addProducts")

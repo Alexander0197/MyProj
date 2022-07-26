@@ -33,7 +33,7 @@
         <th>Удаление</th>
     </tr>
     </thead>
-    <tr th:each=" products : ${productsAll}">
+    <tr th:each=" products : ${getProducts}">
         <td th:text="${products.vendorCode}"></td>
         <td th:text="${products.title}"></td>
         <td th:text="${products.manufacturer}"></td>
