@@ -21,29 +21,29 @@ public class ProvidersController {
 
 
     @GetMapping("/providers")
-    public String findAll(Model model)
-    {
+    public String findAll(Model model) {
         List<Providers> providersAll = repository.findAll();
         model.addAttribute("providersAll", providersAll);
         return "providers";
     }
+
     @GetMapping("/deleteProviders")
-    public String deleteProviders(@RequestParam int trn)
-    {
+    public String deleteProviders(@RequestParam int trn) {
         repository.deleteById(trn);
         return "redirect:providers";
     }
+
     @GetMapping("/addProviders")
-    public String addProviders()
-    {
+    public String addProviders() {
         return "addProviders";
     }
+
     @PostMapping("/addProviders")
-    public String addProviders(@ModelAttribute Providers providers)
-    {
+    public String addProviders(@ModelAttribute Providers providers) {
         repository.save(providers);
         return "redirect:providers";
     }
+
     @GetMapping("/update-providers")
     public String update(@RequestParam int trn, Model model) {
         Providers providers = repository.findById(trn).get();

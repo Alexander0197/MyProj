@@ -35,7 +35,6 @@ public class Products {
     }
 
 
-
     public int getVendorCode() {
         return vendorCode;
     }
@@ -67,8 +66,6 @@ public class Products {
     public void setPrice(int price) {
         this.price = price;
     }
-
-
 
 
     @Override
