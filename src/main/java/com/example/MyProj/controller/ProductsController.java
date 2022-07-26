@@ -33,6 +33,13 @@ public class ProductsController {
         productsRepository.deleteById(vendorCode);
         return "redirect:productsAll";
     }
+    @GetMapping("/getProducts")
+    public String getProducts(@RequestParam int trn, Model model)
+    {
+        List<Products> products = productsRepository.getProducts(trn);
+        model.addAttribute("productsAll", products);
+        return "getProducts";
+    }
     @GetMapping("/addProducts")
     public String addProducts(Model model)
     {   model.addAttribute("providersAll", providersRepository.findAll());

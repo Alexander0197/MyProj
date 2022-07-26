@@ -31,7 +31,9 @@
             </tr>
             </thead>
             <tr th:each="providers : ${providersAll}">
-                <td th:text=${providers.trn}></td>
+                <td>
+                    <a th:href="@{getProducts(trn=${providers.trn})}" th:text=${providers.trn}></a>
+                </td>
                 <td th:text=${providers.title}></td>
                 <td th:text=${providers.bankDetails}></td>
                 <td th:text=${providers.accountNumber}></td>
